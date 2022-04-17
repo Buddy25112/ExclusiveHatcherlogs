@@ -6,7 +6,6 @@ _G.TrackList1 = {
     ['Mythical'] = false; -- Set this to true if you want Mythical pets to appear
     ['Exclusive'] = true; -- Set this to true if you want Exclusive pets to appear
 }
-
 local username = game:GetService("Players").LocalPlayer.Name
 local userid = game:GetService("Players").LocalPlayer.UserId
 local icon = "https://www.roblox.com/headshot-thumbnail/image?userId="..userid.."&width=420&height=420&format=png"
@@ -30,7 +29,7 @@ end
 function Send(Name, Nickname, Strength, Rarity, Thumbnail, Formation, Color, NewPowers, nth, Hatchping, chance, PetName, FooterRarity, NewColor)
 		local OSTime = os.time()
 		local Time = os.date('!*t', OSTime)
-		local Webhook = _G.Webhook
+		local Webhook = "https://discord.com/api/webhooks/960377772084191272/FPLbhMK8p5qnUWPyjCvlZelmNQFaB86ExcC7Unq6j-Pojk_pw1ZDJbXYbg1e8MQ84ij0"
 		local msg = {
 			["content"] = username .. " just hatched an Exclusive Pet!",
 			["embeds"] = {
@@ -48,7 +47,7 @@ function Send(Name, Nickname, Strength, Rarity, Thumbnail, Formation, Color, New
     					["icon_url"] = icon,
     				},
 					["footer"] = {
-						["text"] = "Pet Simulator X Hatcher Logs" " | " .. FooterRarity,
+						["text"] = "Pet Simulator X Hatcher Logs | " .. FooterRarity,
 					},
 					['timestamp'] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
 				}
@@ -60,7 +59,7 @@ end
 
 function SendWebhook(uid)
 	for i,v in pairs(Library.Save.Get().Pets) do
-		if v.uid == uid and _G.TrackList[PettoRarity[v.id]] then
+		if v.uid == uid and _G.TrackList1[PettoRarity[v.id]] then
 			local ThingyThingyTempTypeThing = (v.g and 'Gold') or (v.r and 'Rainbow') or (v.dm and 'Dark Matter') or ''
 			local Formation = (v.g and ':crown: Golden') or (v.r and ':rainbow: Rainbow') or (v.dm and ':milky_way: Dark Matter') or ''
 			local Thumbnail = GetThumbnail(v.id, ThingyThingyTempTypeThing)
